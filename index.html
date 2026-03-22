@@ -140,7 +140,7 @@
 
 <header>
   <div class="hbadge">ECOenergy Friedrichsdorf GmbH · Tarife P-WÄ-GP4-122-0001 / P-WÄ-AP-101-0013 · §5 Abs. 2+3</div>
-  <h1>Wärmekosten-Rechner <span style="font-size:13px;font-weight:400;color:var(--muted);letter-spacing:.02em">V 1.0</span></h1>
+  <h1>Wärmekosten-Rechner <span style="font-size:13px;font-weight:400;color:var(--muted);letter-spacing:.02em">V 1.01</span></h1>
   <p>Für alle Häuser der Ökosiedlung Friedrichsdorf mit Wärmelieferungsvertrag ECOenergy · Einzeljahr-Berechnung</p>
 </header>
 
@@ -155,7 +155,7 @@
 <!-- ANLEITUNG -->
 <div style="max-width:860px;margin:0 auto 16px;background:var(--card);border:1px solid var(--border);border-radius:9px;padding:14px 18px;font-size:12px;color:var(--muted);line-height:1.7">
   <strong style="color:var(--text);font-size:13px">So benutzt du diesen Rechner:</strong><br>
-  <strong style="color:var(--col-index)">1.</strong> Klicke auf <strong style="color:var(--text)">„Basisdaten 2025"</strong> – alle gemeinsamen Werte (Anschlussleistung, Indizes, Beschaffungskosten) werden automatisch befüllt. Diese Werte sind für <em>alle</em> Hofhäuser mit diesem Vertrag identisch.<br>
+  <strong style="color:var(--col-index)">1.</strong> Klicke auf <strong style="color:var(--text)">„Basisdaten 2025"</strong> – alle gemeinsamen Werte (Anschlussleistung, Indizes, Beschaffungskosten) werden automatisch befüllt. Diese Werte sind für <em>alle</em> Häuser mit diesem Vertrag identisch.<br>
   <strong style="color:var(--red)">2.</strong> Trage deinen <strong style="color:var(--red)">individuellen Verbrauch H1 und H2</strong> ein (✱ Pflichtfelder, aus Seite 2 deiner Abrechnung).<br>
   <strong style="color:var(--col-auto)">3.</strong> Klicke <strong style="color:var(--text)">„Jahreskosten berechnen"</strong>.<br>
   <span style="color:var(--muted);font-size:11px">Dezimalwerte mit Komma <em>oder</em> Punkt eingeben (0,08916 oder 0.08916). Verbrauch in kWh (nicht MWh): Wert aus Abrechnung ×1000.</span>
@@ -167,7 +167,7 @@
   <button class="pbtn" onclick="prefill(2024)" id="pb24">Basisdaten 2024</button>
   <button class="pbtn" onclick="prefill(2025)" id="pb25">Basisdaten 2025</button>
   <button class="pbtn" onclick="clearAll()">Leeren</button>
-  <span style="font-size:11px;color:var(--muted);margin-left:auto">Alle Felder außer Verbrauch sind für alle Hofhäuser gleich</span>
+  <span style="font-size:11px;color:var(--muted);margin-left:auto">Alle Felder außer Verbrauch sind für alle Häuser gleich</span>
 </div>
 
 <!-- FEHLER-BANNER -->
@@ -421,13 +421,13 @@ const GP0_10=253.65, GP0_90=88.35, GP0_100=76.95, GP0_rest=65.55;
 const I0=94.4, L0=93.5, AP0=78.02;
 const B0=0.03687, GG0=89.9, S0=0.2097, SI0=71.4;
 
-// ── BASISDATEN (gleich für alle Hofhäuser) ─────────────────
+// ── BASISDATEN (gleich für alle Häuser) ─────────────────
 // Diese Werte gelten vertraglich oder per Abrechnungsperiode
 // für ALLE Kunden des Tarifs P-WÄ-GP4-122-0001 / P-WÄ-AP-101-0013.
 // Individuell einzutragen (Pflichtfelder): kwh1, kwh2.
 const BASE = {
   2025: {
-    // Anschlussleistung: §2 Abs. 3 – für alle Hofhäuser 7 kW
+    // Anschlussleistung: §2 Abs. 3 – für alle Häuser 7 kW
     kw:7,
     // Destatis-Indizes: selbe Werte für alle (gleicher Abrechnungszeitraum)
     I:116.8, L:115.5,
@@ -514,7 +514,7 @@ function updateAPs() {
 }
 
 // ── PREFILL ────────────────────────────────────────────────
-// Befüllt NUR die gemeinsamen Basisdaten (alle Hofhäuser gleich).
+// Befüllt NUR die gemeinsamen Basisdaten (alle Häuser gleich).
 // kwh1 und kwh2 werden NICHT gesetzt – das sind individuelle Werte!
 function prefill(year) {
   const d = BASE[year];
